@@ -66,12 +66,12 @@ func (uc *userController) LogIn(c echo.Context) error {
 
 func (uc *userController) LogOut(c echo.Context) error {
 	cookie := &http.Cookie{
-		Name:    "token",
-		Value:   "",
-		Path:    "/",
-		Domain:  os.Getenv("API_DOMAIN"),
-		Expires: time.Now(),
-		// Secure: true,
+		Name:     "token",
+		Value:    "",
+		Path:     "/",
+		Domain:   os.Getenv("API_DOMAIN"),
+		Expires:  time.Now(),
+		Secure:   true,
 		HttpOnly: true,
 		SameSite: http.SameSiteNoneMode, // フロントがSPAのため、Noneとする。
 	}
