@@ -25,7 +25,7 @@ func NewRouter(uc controller.IUserController, sc controller.IStarController) *ec
 	// }))
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		// CORS設定
-		AllowOrigins: []string{"https://localhost:3000", os.Getenv("FE_URL")},
+		AllowOrigins: []string{"https://localhost:3000", os.Getenv("FE_URL"), os.Getenv("FE_URL") + "/search"},
 		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept,
 			echo.HeaderAccessControlAllowHeaders, echo.HeaderXCSRFToken},
