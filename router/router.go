@@ -25,7 +25,7 @@ func NewRouter(uc controller.IUserController, sc controller.IStarController) *ec
 	// }))
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		// CORS設定
-		AllowOrigins: []string{"https://localhost:3000", os.Getenv("FE_URL")},
+		AllowOrigins: []string{"https://localhost:3000", os.Getenv("FE_URL"), "https://my-favorite-pokemon-app-front.vercel.app"}, //Vercel,Renderの環境ではCORSに引っかかるため無理やり設定
 		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept,
 			echo.HeaderAccessControlAllowHeaders, echo.HeaderXCSRFToken},
