@@ -32,11 +32,11 @@ func NewUserController(uu usecase.IUserUsecase) IUserController {
 func (uc *userController) SignUp(c echo.Context) error {
 	user := model.User{}
 	if err := c.Bind(&user); err != nil {
-		return c.JSON(http.StatusBadRequest, err)
+		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	resUser, err := uc.uu.SingUp(user)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err)
+		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 	return c.JSON(http.StatusCreated, resUser)
 }
@@ -44,11 +44,11 @@ func (uc *userController) SignUp(c echo.Context) error {
 func (uc *userController) LogIn(c echo.Context) error {
 	user := model.User{}
 	if err := c.Bind(&user); err != nil {
-		return c.JSON(http.StatusBadRequest, err)
+		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	token, err := uc.uu.Login(user)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err)
+		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 	cookie := &http.Cookie{
 		Name:     "token",
